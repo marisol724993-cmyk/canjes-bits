@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrusel Cuadrado con Fade</title>
+
+  <!-- Fuente redondita, infladita y suave -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ====== CONFIGURACIÓN GENERAL ====== */
+    body {
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Baloo 2', sans-serif; /* Fuente redondita y amigable 💖 */
+    }
+
+    /* ====== ÁREA PRINCIPAL (CUADRADA) ====== */
+    .contenedor {
+      position: relative;
+      width: 600px;
+      height: 600px;
+      overflow: hidden;
+      border-radius: 25px;
+    }
+
+    /* ====== CADA ITEM (IMAGEN + TEXTO) ====== */
+    .item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 90%;
+      height: 90%;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 2s ease;
+    }
+
+    /* ====== IMÁGENES ====== */
+    .item img {
+      width: 60%;
+      height: auto;
+      filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.3)); /* Suave brillo rosado */
+    }
+
+    /* ====== TEXTO DEBAJO DE LA IMAGEN ====== */
+    .item p {
+      position: absolute;
+      z-index: 5;
+      color: #ffe0f1;
+      font-size: 5em;
+      text-align: center;
+      line-height: 1em;
+      font-weight: 900;
+      margin: 0;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(247, 182, 217, 0.4);
+    }
+
+    /* ====== CLASE PARA MOSTRAR EL ITEM ACTUAL ====== */
+    .activo {
+      opacity: 1;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <!-- Puedes agregar o quitar items libremente -->
+    <div class="item activo">
+      <img src="https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/static/100/4.png" alt="Gato">
+      <p>50<br>Screamer suave</p>
+    </div>
+    
+    <div class="item activo">
+      <img src="https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/static/100/4.png" alt="Gato">
+      <p>100<br>Animal de globo</p>
+    </div>
+
+    <div class="item activo">
+      <img src="https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/static/100/4.png" alt="Gato">
+      <p>200<br>Dibujo tu foto de perfil</p>
+    </div>
+
+    <div class="item">
+      <img src="https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/static/100/4.png" alt="Frutas">
+      <p>250<br>Baile de manos</p>
+    </div>
+
+    <div class="item">
+      <img src="https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/static/100/4.png" alt="Perro">
+      <p>300<br>Canto algo</p>
+    </div>
+  </div>
+
+  <script>
+    /* ====== SCRIPT DE TRANSICIÓN AUTOMÁTICA ====== */
+
+    const items = document.querySelectorAll('.item');
+    let indexActual = 0;
+
+    function cambiarItem() {
+      items[indexActual].classList.remove('activo');
+      indexActual = (indexActual + 1) % items.length;
+      items[indexActual].classList.add('activo');
+    }
+
+    setInterval(cambiarItem, 4000); // cada 4 segundos
+  </script>
+</body>
+</html>
